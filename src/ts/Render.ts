@@ -1,7 +1,15 @@
 import {Board} from "./Types";
-import Config from "./config";
+import Config from "./Config";
 
 const getBoxesElements = (board:Board):HTMLElement[] => {
+    const clickEvent = (event:Event):void => {
+        const target = event.target as HTMLElement;
+        const id = target.dataset.id;
+        board[id] = 'x';
+
+        Render(board);
+    }
+
     return board.map((box, index) => {
         const element:HTMLElement = document.createElement('div');
         let boxValue = '';
@@ -12,14 +20,7 @@ const getBoxesElements = (board:Board):HTMLElement[] => {
             boxValue = box;
             element.classList.add('used');
         } else {
-            //If buttons already used there is no needed to add event
-            element.addEventListener('click', (event) => {
-                const target = event.target as HTMLElement;
-                const id = target.dataset.id;
-
-                board[id] = 'x';
-                Render(board);
-            });
+            element.addEventListener('click', clickEvent);
         }
 
         element.innerHTML = `<span>${boxValue}</span>`;

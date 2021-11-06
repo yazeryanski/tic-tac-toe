@@ -1,5 +1,5 @@
 {
-  "name": "Tic-Tac-Toe App",
+  "name": "tic-tac-toe-app",
   "version": "1.0.0",
   "description": "Tic-Tac-Toe unbeatable app via TypeScript, SCSS and Webpack",
   "main": "index.js",
