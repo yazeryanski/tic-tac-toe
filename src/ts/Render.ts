@@ -7,7 +7,10 @@ const getBoxesElements = (board:Board):HTMLElement[] => {
         const id = target.dataset.id;
         board[id] = 'x';
 
-        Render(board);
+        target.classList.add('used');
+        setTimeout(() => {
+            Render(board);
+        }, 300);
     }
 
     return board.map((box, index) => {
