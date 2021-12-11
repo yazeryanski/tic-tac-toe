@@ -1,20 +1,8 @@
 import {Board} from "./Types";
-import Config from "./Config";
-import AI from "./AI";
+import {config} from "./Configs";
+import {humanStep} from "./Core.js";
 
 const getBoxesElements = (board:Board):HTMLElement[] => {
-    const clickEvent = (event:Event):void => {
-        const target = event.target as HTMLElement;
-        const id = target.dataset.id;
-        board[id] = Config.human;
-
-        target.classList.add('used');
-        setTimeout(() => {
-            AI.step(board);
-            Render(board);
-        }, 300);
-    }
-
     return board.map((box, index) => {
         const element:HTMLElement = document.createElement('div');
         let boxValue = '';
@@ -25,7 +13,7 @@ const getBoxesElements = (board:Board):HTMLElement[] => {
             boxValue = box;
             element.classList.add('used');
         } else {
-            element.addEventListener('click', clickEvent);
+            element.addEventListener('click', humanStep(board));
         }
 
         element.innerHTML = `<span>${boxValue}</span>`;
@@ -44,7 +32,7 @@ const getGridElement = (board:Board):HTMLElement => {
 }
 
 function Render(board:Board):void {
-    const APP = document.querySelector(Config.el);
+    const APP = document.querySelector(config.el);
     const gridElement = getGridElement(board);
 
     APP.replaceChildren( gridElement );
