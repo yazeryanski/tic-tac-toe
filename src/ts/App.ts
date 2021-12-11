@@ -3,8 +3,8 @@ import {Board} from "./Types";
 
 const board:Board = [
     0, 1, 2,
-    3, 4, 'x',
-    6, 7, 'o'
+    3, 4, 5,
+    6, 7, 9
 ];
 
 export default () => Render(board);

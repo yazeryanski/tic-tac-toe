@@ -1,7 +1,9 @@
-const Config = {
+import {Config} from "./Types";
+
+const config:Config = {
     el: '#app',
     human: 'x',
-    computer: 'y'
+    computer: 'o'
 };
 
-export default Config;
+export default config;

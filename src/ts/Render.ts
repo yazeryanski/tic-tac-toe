@@ -1,14 +1,16 @@
 import {Board} from "./Types";
 import Config from "./Config";
+import AI from "./AI";
 
 const getBoxesElements = (board:Board):HTMLElement[] => {
     const clickEvent = (event:Event):void => {
         const target = event.target as HTMLElement;
         const id = target.dataset.id;
-        board[id] = 'x';
+        board[id] = Config.human;
 
         target.classList.add('used');
         setTimeout(() => {
+            AI.step(board);
             Render(board);
         }, 300);
     }
