@@ -15,7 +15,6 @@ export function humanStep(board:Board):((event:Event) => void) {
             Render(board);
             checkWin(config.human, board);
             AI.step(board);
-            // checkWin(config.computer, board);
         }, 300);
     }
 }
