@@ -1,4 +1,4 @@
-import {winingPositions, config} from "./Configs";
+import {winingPositions, config, entryBoard} from "./Configs";
 import {Board, Move, Moves, Point, WinCombo} from "./Types";
 import AI from "./AI";
 import Render from "./Render";
@@ -104,5 +104,6 @@ export function checkGameOver(player:Point, board:Board) {
 
     if (gameOver) {
         alert (message);
+        setTimeout( () => Render([...entryBoard]), 1000);
     }
 }
