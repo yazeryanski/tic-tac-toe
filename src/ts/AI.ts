@@ -1,12 +1,14 @@
 import {config} from "./Configs";
-import {Board} from "./Types";
+import {Board, Move} from "./Types";
 import {getRandomNumber} from "./Utils";
-import {checkWin} from "./Core.js";
+import {checkWin, minimax} from "./Core.js";
 
 export const step = (board:Board):void => {
-    const randomIndex = getRandomNumber(0, board.length - 1);
-    board[randomIndex] = config.computer;
     checkWin(config.computer, board);
+
+    const move:Move = minimax(board, config.computer);
+    board[move.index] = config.computer;
+    console.log(move, 'MOVE');
 }
 
 export default {
